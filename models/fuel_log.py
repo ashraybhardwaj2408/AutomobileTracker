@@ -3,12 +3,12 @@ class FuelTracker:
         self.db = db
 
     def add_fuel_log(self, vehicle_id, odometer, litres, cost):
-        # Insert log
+        #insert log
         self.db.execute_query(
             "INSERT INTO fuel_logs (vehicle_id, odometer, litres, cost) VALUES (?, ?, ?, ?)",
             (vehicle_id, odometer, litres, cost)
         )
-        # Update vehicle current odometer
+        #update vehicle current odometer
         self.db.execute_query("UPDATE vehicles SET current_odometer = ? WHERE id = ?", (odometer, vehicle_id))
         print("Fuel log added successfully and vehicle odometer updated.")
 
